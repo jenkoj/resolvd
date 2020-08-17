@@ -1,0 +1,12 @@
+[Unit]
+Description=manages py script publishng measured data over mqtt
+Requires=network-online.target
+
+[Service]
+WorkingDirectory=/root/DFNDR
+ExecStart=/root/DFNDR/publish_measurements.py
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
