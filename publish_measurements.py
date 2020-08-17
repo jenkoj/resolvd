@@ -2,17 +2,13 @@
 
 import ssl 
 import paho.mqtt.client as mqtt
-import zerorpc
 import serial
 import time
-import os
 import json 
-import sys
 
 err_count = 0
 
 machine_id = open('/etc/machine-id').readline().strip()
-
 
 client = mqtt.Client(transport="websockets")
 client.ws_set_options("/mqtt")
