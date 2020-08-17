@@ -19,7 +19,7 @@ client.tls_set('/etc/ssl/certs/DST_Root_CA_X3.pem', tls_version=ssl.PROTOCOL_TLS
 client.username_pw_set("user", "pass")
 client.connect("example.com", 443)
 
-topic = "/resolvd/pmc/" + machine_id
+topic = "resolvd/pmc/" + machine_id
         
 ser = serial.Serial('/dev/ttyS2',
                         baudrate=115200,
