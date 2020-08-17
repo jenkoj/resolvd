@@ -9,6 +9,7 @@ import os
 import json 
 import sys
 
+err_count = 0
 
 machine_id = open('/etc/machine-id').readline().strip()
 
