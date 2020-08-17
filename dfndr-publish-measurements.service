@@ -3,8 +3,8 @@ Description=manages py script publishng measured data over mqtt
 Requires=network-online.target
 
 [Service]
-WorkingDirectory=/root/DFNDR
-ExecStart=/root/DFNDR/publish_measurements.py
+WorkingDirectory=/root/resolvd
+ExecStart=/root/resolvd/publish_measurements.py
 Restart=on-failure
 RestartSec=5s
 

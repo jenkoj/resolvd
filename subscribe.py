@@ -16,11 +16,11 @@ def on_message(client, userdata, msg):
 client = mqtt.Client(transport="websockets")
 client.ws_set_options("/mqtt")
 client.tls_set('/etc/ssl/certs/DST_Root_CA_X3.pem', tls_version=ssl.PROTOCOL_TLSv1_2)
-client.username_pw_set("videk", "sensorlab2010")
+client.username_pw_set("user", "pass")
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("resolvd.comsensus.eu", 443)
+client.connect("example.net", 443)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.

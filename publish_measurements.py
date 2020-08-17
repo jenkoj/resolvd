@@ -64,7 +64,7 @@ def publish():
                 }
 
         print(topic)
-        print(json.dumps(data))
+        #print(json.dumps(data))
         client.publish(topic=topic, payload=json.dumps(data))
 
 while True:
@@ -76,7 +76,7 @@ while True:
         except:
                 print("parse error")
 
-                #uncomment if systemd does not recover
+                # uncomment if systemd does not recover for some reason
                 # err_count = err_count + 1
                 # if err_count > 10: 
                 #         sys.exit(1)
