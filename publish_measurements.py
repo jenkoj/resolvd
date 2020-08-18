@@ -5,7 +5,6 @@ import paho.mqtt.client as mqtt
 import serial
 import time
 import json 
-import sys
 
 machine_id = open('/etc/machine-id').readline().strip()
 
