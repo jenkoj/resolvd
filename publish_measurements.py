@@ -2,17 +2,12 @@
 
 import ssl 
 import paho.mqtt.client as mqtt
-import zerorpc
 import serial
 import time
-import os
 import json 
 import sys
 
-err_count = 0
-
 machine_id = open('/etc/machine-id').readline().strip()
-
 
 client = mqtt.Client(transport="websockets")
 client.ws_set_options("/mqtt")
@@ -28,6 +23,7 @@ ser = serial.Serial('/dev/ttyS2',
                         parity=serial.PARITY_ODD,
                         stopbits=serial.STOPBITS_ONE)
 
+
 def serial_read():
    
     while True:
@@ -37,6 +33,7 @@ def serial_read():
 
             except:
                 print("serial error")
+                time.sleep(0.01)
                 continue
 
   
@@ -68,6 +65,7 @@ def publish():
         #print(json.dumps(data))
         client.publish(topic=topic, payload=json.dumps(data))
 
+
 while True:
         try:
                 publish()
@@ -76,9 +74,3 @@ while True:
                 
         except:
                 print("parse error")
-
-                # uncomment if systemd does not recover for some reason
-                # err_count = err_count + 1
-                # if err_count > 10: 
-                #         sys.exit(1)
-
