@@ -32,7 +32,7 @@ def serial_read():
 
             except:
                 print("serial error")
-                time.sleep(0.01)
+                time.sleep(0.1)
                 continue
 
   
