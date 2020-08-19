@@ -38,29 +38,30 @@ def serial_read():
   
 def publish():
         
-        parsed_data = serial_read().split(",")    
+        #data is parsed according to standard
+        d = serial_read().split(",")    
         seconds = int(round(time.time()))
         
         data = { 
-                "timestamp":("%d" % seconds), 
-                "Phase_1_voltage_RMS":float(parsed_data[1]),
-                "Phase_2_voltage_RMS":float(parsed_data[2]),
-                "Phase_3_voltage_RMS":float(parsed_data[3]),
-                "Phase_1_current_RMS":float(parsed_data[4]),
-                "Phase_2_current_RMS":float(parsed_data[5]),
-                "Phase_3_current_RMS":float(parsed_data[6]),
-                "Phase_1_frequency":float(parsed_data[8]),
-                "Phase_2_voltage_phase_angle":float(parsed_data[9]),
-                "Phase_3_voltage_phase_angle":float(parsed_data[10]),
-                "Phase_1_Active_Power":float(parsed_data[17]),
-                "Phase_2_Active_Power":float(parsed_data[18]),  
-                "Phase_3_Active_Power":float(parsed_data[19]),
-                "Phase_1_Reactive_Power":float(parsed_data[20]),
-                "Phase_2_Reactive_Power":float(parsed_data[21]),
-                "Phase_3_Reactive_Power":float(parsed_data[22])
+                "t":("%d" % seconds), 
+                "U1":float(d[1]),
+                "U2":float(d[2]),
+                "U3":float(d[3]),
+                "I1":float(d[4]),
+                "I2":float(d[5]),
+                "I3":float(d[6]),
+                "f1":float(d[8]),
+                "fi_U2":float(d[9]),
+                "fi_U3":float(d[10]),
+                "P1":float(d[17]),
+                "P2":float(d[18]),  
+                "P3":float(d[19]),
+                "Q1":float(d[20]),
+                "Q2":float(d[21]),
+                "Q3":float(d[22])
                 }
-
-        print(topic)
+        #uncomment below to debug
+        #print(topic)
         #print(json.dumps(data))
         client.publish(topic=topic, payload=json.dumps(data))
 
