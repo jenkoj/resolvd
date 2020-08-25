@@ -14,8 +14,8 @@ machine_id = open('/etc/machine-id').readline().strip()
 client = mqtt.Client(transport="websockets")
 client.ws_set_options("/mqtt")
 client.tls_set('/etc/ssl/certs/DST_Root_CA_X3.pem', tls_version=ssl.PROTOCOL_TLSv1_2)
-client.username_pw_set("videk", "sensorlab2010")
-client.connect("resolvd.comsensus.eu", 443)
+client.username_pw_set("usr", "pass")
+client.connect("example.eu", 443)
 client.loop_start()
 
 topic = "resolvd/pmc/" + machine_id
