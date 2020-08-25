@@ -1,0 +1,8 @@
+[Unit]
+Description=Reconnets if lte down - every 60s
+
+[Service]
+ExecStart=/root/resolvd/reconnect.sh
+
+[Install]
+WantedBy=multi-user.target
