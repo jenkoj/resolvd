@@ -32,6 +32,10 @@ def serial_read():
                 try:
                         serial_data = ser.readline().decode('utf-8')
                         d = serial_data.split(",")
+                        
+                        if len(d) != 54:
+                                raise ValueError("len err")
+                        
                         seconds = int(round(time.time()))
 
                         data = {
@@ -69,14 +73,13 @@ def publish():
 while True:
         try:
                 publish()
-                ser.flushInput()                
+                ser.flushInput()
                 time.sleep(0.94)
 
         except:
                 print("publish error")
                 err_count = err_count + 1
-                if err_count > 600:
+                if err_count > 1000:
                         print("error count too high")
                         sys.exit(1)
-               
 
